@@ -19,14 +19,14 @@ const createWeatherElement = (weather) => (`
 
 const todayWeather = (weathers) => {
   const todayContainerElement = document.getElementById('today_weather');
-  const todayWeatherData = weathers.slice(0,1);
-  todayContainerElement.innerHTML = createWeatherElement(todayWeatherData[0]);
+  const todayWeatherData = weathers[0];
+  todayContainerElement.innerHTML = createWeatherElement(todayWeatherData);
 }
 
-const yesterdayWeather = (weathers) => {
-  const yesterdayContainerElement = document.getElementById('yesterday_weather');
-  const yesterdayWeatherData = weathers.slice(1,2);
-  yesterdayContainerElement.innerHTML = createWeatherElement(yesterdayWeatherData[0]);
+const tomorrowWeather = (weathers) => {
+  const tomorrowContainerElement = document.getElementById('tomorrow_weather');
+  const tomorrowWeatherData = weathers[1];
+  tomorrowContainerElement.innerHTML = createWeatherElement(tomorrowWeatherData);
 }
 
 
@@ -44,7 +44,7 @@ const init = async () => {
   const getData = await getApiData();
   const data = getData[319];
   todayWeather(data);
-  yesterdayWeather(data);
+  tomorrowWeather(data);
   appendWeathers(data);
 }
 
